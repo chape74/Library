@@ -9,32 +9,14 @@ public class Ejemplar {
     private LocalDate diaPrestamo;
     private LocalDate diaDevolucion;
 
-    private Ejemplar(Publicacion publicacion) {
+    public Ejemplar(Publicacion publicacion) {
         this.publicacion = publicacion;
         codigoEjemplar = new Random().nextInt(1000000000);
     }
 
-    private Ejemplar(Publicacion publicacion, int codigoEjemplar) {
+    public Ejemplar(Publicacion publicacion, int codigoEjemplar) {
         this.publicacion = publicacion;
         this.codigoEjemplar = codigoEjemplar;
-    }
-
-    public static Ejemplar crearEjemplar(Publicacion publicacion) {
-        Ejemplar aux = new Ejemplar(publicacion);
-        if (aux.publicacion instanceof Libro || aux.publicacion.getTieneEjemplar()){
-            aux.publicacion.setTieneEjemplar(true);
-            return aux;
-        }
-        return null;
-    }
-
-    public static Ejemplar crearEjemplar(Publicacion publicacion, int codigoEjemplar){
-        Ejemplar aux = new Ejemplar(publicacion);
-        if (aux.publicacion instanceof Libro || aux.publicacion.getTieneEjemplar()) {
-            aux.publicacion.setTieneEjemplar(true);
-            return aux;
-        }
-        return null;
     }
 
     public void eliminarPublicacion() {

@@ -6,15 +6,20 @@ public abstract class Publicacion {
 
     private final Color color;
 
-    private boolean tieneEjemplar;
+    private GenericList<Ejemplar> ejemplares;
 
-    public boolean getTieneEjemplar() {
-        return tieneEjemplar;
+    public GenericList<Ejemplar> getEjemplares() {
+        return ejemplares;
     }
 
-    public void setTieneEjemplar(boolean tieneEjemplar) {
-        this.tieneEjemplar = tieneEjemplar;
+    public boolean crearEjemplar() {
+        if (this instanceof Libro || ejemplares.size()>0){
+            ejemplares.add(new Ejemplar(this));
+            return true;
+        }
+        return false;
     }
+
 
     public String getEditorial() {
         return editorial;
@@ -28,9 +33,6 @@ public abstract class Publicacion {
         return color;
     }
 
-    public boolean isTieneEjemplar() {
-        return tieneEjemplar;
-    }
 
     public Publicacion(String editorial, int numPaginas, Color color) {
         this.editorial = editorial;

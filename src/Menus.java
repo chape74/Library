@@ -16,8 +16,8 @@ public class Menus {
         System.out.println("* 4- Crear un cliente             *");
         System.out.println("* 5- Eliminar un cliente          *");
         System.out.println("* 6- Modificar datos de cliente   *");
-        System.out.println("* 7- Prestar libro a cliente      *");
-        System.out.println("* 8- Devolver libro del cliente   *");
+        System.out.println("* 7- Prestar pub. a cliente      *");
+        System.out.println("* 8- Devolver pub. del cliente   *");
         System.out.println("***********************************");
     }
 }

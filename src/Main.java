@@ -7,25 +7,25 @@ public class Main {
 
             switch (num){
                 case 1:
-                    biblioteca.darDeAlta();
+                    biblioteca.darDeAltaPubicacion();
                     break;
                 case 2:
-                    biblioteca.darDeBaja();
+                    biblioteca.darDeBajaPublicacion();
                     break;
                 case 3:
 
                     break;
                 case 4:
-
+                    biblioteca.darDeAltaCliente();
                     break;
                 case 5:
-
+                    biblioteca.darDeBajaCliente();
                     break;
                 case 6:
-
+                    biblioteca.modificarCliente();
                     break;
                 case 7:
-
+                    biblioteca.prestarEjemplar();
                     break;
                 case 8:
 

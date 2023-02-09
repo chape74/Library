@@ -13,13 +13,13 @@ public class MainPrueba {
         Ejemplar ejemplar2  = Ejemplar.crearEjemplar(revista);
         Ejemplar ejemplar3  = Ejemplar.crearEjemplar(revista);
         Ejemplar ejemplar5  = Ejemplar.crearEjemplar(revista2);
-        Abonado abonado = new Abonado("Eloy");
-        System.out.println(abonado.prestamo(ejemplar));
-        System.out.println(abonado.prestamo(ejemplar2));
-        System.out.println(abonado.prestamo(ejemplar3));
+        Cliente cliente = new Cliente("Eloy");
+        System.out.println(cliente.prestamo(ejemplar));
+        System.out.println(cliente.prestamo(ejemplar2));
+        System.out.println(cliente.prestamo(ejemplar3));
         //revista=null;
-        System.out.println(abonado.prestamo(ejemplar3));
+        System.out.println(cliente.prestamo(ejemplar3));
         ejemplar5.eliminarPublicacion();
-        System.out.println(abonado.prestamo(ejemplar5));
+        System.out.println(cliente.prestamo(ejemplar5));
     }
 }

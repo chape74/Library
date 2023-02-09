@@ -5,13 +5,6 @@ public class Libro extends Publicacion {
     private final String titulo;
     private final String isbn;
 
-    public Libro(String editorial, int numPaginas, Color color, String autor, String titulo, String isbn) {
-        super(editorial, numPaginas, color);
-        this.autor = autor;
-        this.titulo = titulo;
-        this.isbn = isbn;
-    }
-
     public Libro(String editorial, int numPaginas, Color color, String autor, String titulo) {
         super(editorial, numPaginas, color);
         this.autor = autor;

@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 import java.util.Random;
 
-public class Abonado {
+public class Cliente {
 
     private String nombre;
 
@@ -9,12 +9,12 @@ public class Abonado {
 
     private GenericList<Ejemplar> prestados;
 
-    public Abonado(String nombre, String DNI) {
+    public Cliente(String nombre, String DNI) {
         this.nombre = nombre;
         this.DNI = DNI;
         this.prestados = new GenericList<>();
     }
-    public Abonado(String nombre) {
+    public Cliente(String nombre) {
         this.nombre = nombre;
         this.DNI = generateDNI();
         this.prestados = new GenericList<>();
@@ -27,19 +27,6 @@ public class Abonado {
         int letterIndex = dniNumber % 23;
         return "" + dniNumber + DNI_LETTERS.charAt(letterIndex);
     }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getDNI() {
-        return DNI;
-    }
-
-    public GenericList<Ejemplar> getPrestados() {
-        return prestados;
-    }
-
 
 
 //    public boolean prestamo(Ejemplar ejemplar) {
@@ -91,6 +78,20 @@ public class Abonado {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Nombre del Cliente: " + nombre + " DNI='" + DNI;
+    }
 
+    public void setPrestados(GenericList<Ejemplar> prestados) {
+        this.prestados = prestados;
+    }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setDNI(String DNI) {
+        this.DNI = DNI;
+    }
 }
