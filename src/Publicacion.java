@@ -13,7 +13,7 @@ public abstract class Publicacion {
     }
 
     public boolean crearEjemplar() {
-        if (this instanceof Libro || ejemplares.size()>0){
+        if (this instanceof Libro || ejemplares.size()<1){
             ejemplares.add(new Ejemplar(this));
             return true;
         }
