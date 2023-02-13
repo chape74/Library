@@ -1,6 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         Biblioteca biblioteca = new Biblioteca();
+        loop:
         while (true){
             Menus.menuPrincipal();
             int num = Scanners.askMenu(8);
@@ -13,29 +14,23 @@ public class Main {
                     biblioteca.darDeBajaPublicacion();
                     break;
                 case 3:
-
-                    break;
-                case 4:
                     biblioteca.darDeAltaCliente();
                     break;
-                case 5:
+                case 4:
                     biblioteca.darDeBajaCliente();
                     break;
-                case 6:
+                case 5:
                     biblioteca.modificarCliente();
                     break;
-                case 7:
+                case 6:
                     biblioteca.prestarEjemplar();
                     break;
-                case 8:
-
+                case 7:
+                    biblioteca.devolverEjemplar();
                     break;
-
                 default:
+                    break loop;
             }
-
-
-
         }
     }
 }

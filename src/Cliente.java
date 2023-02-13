@@ -78,9 +78,13 @@ public class Cliente {
         return true;
     }
 
+    public GenericList<Ejemplar> getPrestados() {
+        return prestados;
+    }
+
     @Override
     public String toString() {
-        return "Nombre del Cliente: " + nombre + " DNI='" + DNI;
+        return nombre + " DNI='" + DNI;
     }
 
     public void setPrestados(GenericList<Ejemplar> prestados) {

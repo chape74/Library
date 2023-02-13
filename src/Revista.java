@@ -47,14 +47,24 @@ public class Revista extends Publicacion{
 
     @Override
     public String toString() {
-        return "Nombre de la revista: " + nombre +
-                ", dia de publicación: " + diaPublicacion;
+        return "Revista: " + nombre +
+                " - Periodicidad: " + getPeriodicidad();
     }
 
     public enum Periodicidad {
-        SEMANAL,
-        MENSUAL,
-        TRIMESTRAL
+        SEMANAL("Semanal"),
+        MENSUAL("Mensual"),
+        TRIMESTRAL("Mensual");
+
+        private String perio;
+
+        Periodicidad(String perio) {
+            this.perio = perio;
+        }
+        @Override
+        public String toString() {
+            return perio;
+        }
     }
 
 

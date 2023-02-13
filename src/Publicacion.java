@@ -12,12 +12,11 @@ public abstract class Publicacion {
         return ejemplares;
     }
 
-    public boolean crearEjemplar() {
+    public void crearEjemplar() {
         if (this instanceof Libro || ejemplares.size()<1){
-            ejemplares.add(new Ejemplar(this));
-            return true;
+            Ejemplar ejemplar = new Ejemplar(this);
+            ejemplares.add(ejemplar);
         }
-        return false;
     }
 
 

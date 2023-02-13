@@ -14,11 +14,6 @@ public class Ejemplar {
         codigoEjemplar = new Random().nextInt(1000000000);
     }
 
-    public Ejemplar(Publicacion publicacion, int codigoEjemplar) {
-        this.publicacion = publicacion;
-        this.codigoEjemplar = codigoEjemplar;
-    }
-
     public void eliminarPublicacion() {
         this.publicacion=null;
     }
@@ -57,7 +52,9 @@ public class Ejemplar {
 
     @Override
     public String toString() {
+        String enuso = "";
+        if (enUso && !(publicacion instanceof Libro)) enuso = " - EN USO, NO SE AÑADIRÁ";
         return "Ejemplar de " + publicacion +
-                ", codigo del ejemplar= " + codigoEjemplar;
+                " - Codigo del ejemplar= " + codigoEjemplar + enuso;
     }
 }

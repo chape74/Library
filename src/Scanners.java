@@ -11,11 +11,6 @@ public class Scanners {
         } while (number < 1 || number > limit);
         return number;
     }
-
-    public static String askString() {
-        Scanner sc = new Scanner(System.in);
-        return sc.nextLine();
-    }
     public static String askString(String string) {
         System.out.println(string);
         Scanner sc = new Scanner(System.in);

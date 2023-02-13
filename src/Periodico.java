@@ -6,21 +6,6 @@ public class Periodico extends Publicacion {
 
     private final LocalDate diaPublicacion;
 
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public LocalDate getDiaPublicacion() {
-        return diaPublicacion;
-    }
-
-    public Periodico(String editorial, int numPaginas, Color color, String nombre, LocalDate diaPublicacion) {
-        super(editorial, numPaginas, color);
-        this.nombre = nombre;
-        this.diaPublicacion = diaPublicacion;
-    }
-
     public Periodico(String editorial, int numPaginas, Color color, String nombre) {
         super(editorial, numPaginas, color);
         this.nombre = nombre;
@@ -28,7 +13,7 @@ public class Periodico extends Publicacion {
     }
 
     public String toString() {
-        return "Nombre del periódico: " + nombre +
-                ", dia de publicación: " + diaPublicacion;
+        return "Periódico: " + nombre +
+                " - dia de publicación: " + diaPublicacion;
     }
 }

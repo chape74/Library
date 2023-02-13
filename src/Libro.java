@@ -39,6 +39,6 @@ public class Libro extends Publicacion {
     @Override
     public String toString() {
         return "Libro: " + titulo +
-                "ISBN: " + isbn;
+                " - ISBN: " + isbn;
     }
 }

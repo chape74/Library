@@ -13,7 +13,6 @@ public class Biblioteca {
         System.out.println("1- Libro");
         System.out.println("2- Revista");
         System.out.println("3- Periódico");
-
         System.out.println("4- Cancelar");
         int num = Scanners.askMenu(4);
         switch (num) {
@@ -72,13 +71,34 @@ public class Biblioteca {
         System.out.println("Cual Cliente?");
         for (int i = 0; i < clientes.size(); i++) {
             System.out.println((i+1) +"- "+ clientes.get(i).toString());
+            if (clientes.get(i).getPrestados().size() == 3) System.out.print("- LLENO!");
+        }
+        System.out.println((clientes.size()+1)+"- Cancelar");
+        int numCli = Scanners.askMenu(clientes.size()+1)-1;
+        if (numCli!=clientes.size()) {
+            System.out.println("De cual Publicación?");
+            for (int i = 0; i < publicaciones.size(); i++) {
+                System.out.println((i + 1) + "- " + publicaciones.get(i).toString());
+            }
+            System.out.println((publicaciones.size() + 1) + "- Cancelar");
+            int numPres = Scanners.askMenu(publicaciones.size() + 1) - 1;
+            publicaciones.get(numPres).crearEjemplar();
+            clientes.get(numCli).prestamo(publicaciones.get(numPres).getEjemplares().get(publicaciones.get(numPres).getEjemplares().size()));
+
+        }
+    }
+
+    public void devolverEjemplar() {
+        System.out.println("Cual Cliente?");
+        for (int i = 0; i < clientes.size(); i++) {
+            System.out.println((i+1) +"- "+ clientes.get(i).toString());
 
         }
         System.out.println((clientes.size()+1)+"- Cancelar");
         int numCli = Scanners.askMenu(clientes.size()+1)-1;
-        System.out.println("Cual Publicación?");
-        for (int i = 0; i < publicaciones.size(); i++) {
-            System.out.println((i+1) +"- "+ publicaciones.get(i).toString());
+        System.out.println("Cual Ejemplar?");
+        for (int i = 0; i < clientes.get(numCli).getPrestados().size(); i++) {
+            System.out.println((i+1) +"- "+ clientes.get(numCli).getPrestados().get(i));
         }
         System.out.println((publicaciones.size()+1)+"- Cancelar");
         int numPres = Scanners.askMenu(publicaciones.size()+1)-1;
