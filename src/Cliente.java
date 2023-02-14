@@ -7,13 +7,8 @@ public class Cliente {
 
     private String DNI;
 
-    private GenericList<Ejemplar> prestados;
+    private final GenericList<Ejemplar> prestados;
 
-    public Cliente(String nombre, String DNI) {
-        this.nombre = nombre;
-        this.DNI = DNI;
-        this.prestados = new GenericList<>();
-    }
     public Cliente(String nombre) {
         this.nombre = nombre;
         this.DNI = generateDNI();
@@ -29,53 +24,18 @@ public class Cliente {
     }
 
 
-//    public boolean prestamo(Ejemplar ejemplar) {
-//        if (ejemplar==null || ejemplar.isEnUso()) {
-//            return false;
-//        }
-//        int i = 0;
-//        while (prestados[i] != null){
-//            i++;
-//            if (i==prestados.length) return false;
-//        }
-//        prestados[i]=ejemplar;
-//        ejemplar.setEnUso(true);
-//        ejemplar.setDiaDevolucion(null);
-//        ejemplar.setDiaPrestamo(LocalDate.now());
-//        return true;
-//    }
-
-        public boolean prestamo(Ejemplar ejemplar) {
-        if (prestados.size()>3) return false;
-        ejemplar.setEnUso(true);
+        public void prestamo(Ejemplar ejemplar) {
+        if (prestados.size()>=3) return;
         ejemplar.setDiaDevolucion(null);
         ejemplar.setDiaPrestamo(LocalDate.now());
         prestados.add(ejemplar);
-        return true;
     }
 
-//    public boolean devolucion(Ejemplar ejemplar) {
-//        if (!ejemplar.isEnUso()){
-//            return false;
-//        }
-//        int i = 0;
-//        while (prestados[i] != ejemplar){
-//            i++;
-//            if (i==prestados.length) return false;
-//        }
-//        prestados[i]=null;
-//        ejemplar.setEnUso(false);
-//        ejemplar.setDiaDevolucion(LocalDate.now());
-//        return true;
-//    }
-
-        public boolean devolucion(Ejemplar ejemplar) {
+        public void devolucion(Ejemplar ejemplar) {
         int num = prestados.search(ejemplar);
-        if (num==-1) return false;
-        ejemplar.setEnUso(false);
+        if (num==-1) return;
         ejemplar.setDiaDevolucion(LocalDate.now());
         prestados.remove(num);
-        return true;
     }
 
     public GenericList<Ejemplar> getPrestados() {
@@ -84,12 +44,9 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return nombre + " DNI='" + DNI;
+        return nombre + " DNI: " + DNI;
     }
 
-    public void setPrestados(GenericList<Ejemplar> prestados) {
-        this.prestados = prestados;
-    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;

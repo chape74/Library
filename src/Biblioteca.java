@@ -8,7 +8,7 @@ public class Biblioteca {
         clientes = new GenericList<>();
     }
 
-    public void darDeAltaPubicacion(){
+    public void darDeAltaPublicacion(){
         System.out.println("De que tipo?");
         System.out.println("1- Libro");
         System.out.println("2- Revista");
@@ -62,47 +62,55 @@ public class Biblioteca {
 
         }
         System.out.println((clientes.size()+1)+"- Cancelar");
-        int j = Scanners.askMenu(clientes.size()+1)-1;
-        clientes.get(Scanners.askMenu(j)).setNombre(Scanners.askString("Nuevo Nombre: "));
-        clientes.get(Scanners.askMenu(j)).setDNI(Scanners.askString("Nuevo DNI: "));
+        int numCli = Scanners.askMenu(clientes.size()+1)-1;
+        if (numCli!=clientes.size()) {
+            clientes.get(numCli).setNombre(Scanners.askString("Nuevo Nombre: "));
+            clientes.get(numCli).setDNI(Scanners.askString("Nuevo DNI: "));
+        }
     }
 
     public void prestarEjemplar() {
         System.out.println("Cual Cliente?");
         for (int i = 0; i < clientes.size(); i++) {
-            System.out.println((i+1) +"- "+ clientes.get(i).toString());
+            System.out.print((i+1) +"- "+ clientes.get(i).toString());
             if (clientes.get(i).getPrestados().size() == 3) System.out.print("- LLENO!");
+            System.out.println();
         }
         System.out.println((clientes.size()+1)+"- Cancelar");
         int numCli = Scanners.askMenu(clientes.size()+1)-1;
-        if (numCli!=clientes.size()) {
-            System.out.println("De cual Publicación?");
+        if (numCli!=clientes.size() && clientes.get(numCli).getPrestados().size() != 3) {
+            System.out.println("De cual Publicación quieres crear un ejemplar y dárselo al Cliente?");
             for (int i = 0; i < publicaciones.size(); i++) {
-                System.out.println((i + 1) + "- " + publicaciones.get(i).toString());
+                System.out.printf((i + 1) + "- " + publicaciones.get(i).toString());
+                if (!(publicaciones.get(i) instanceof Libro) && publicaciones.get(i).getEjemplares().size()==1) System.out.print(" - YA CREADO, NO SE CREARÁ OTRO");
+                System.out.println();
             }
             System.out.println((publicaciones.size() + 1) + "- Cancelar");
             int numPres = Scanners.askMenu(publicaciones.size() + 1) - 1;
-            publicaciones.get(numPres).crearEjemplar();
-            clientes.get(numCli).prestamo(publicaciones.get(numPres).getEjemplares().get(publicaciones.get(numPres).getEjemplares().size()));
-
+            if (numPres != publicaciones.size() && publicaciones.get(numPres).crearEjemplar())
+                clientes.get(numCli).prestamo(publicaciones.get(numPres).getEjemplares().get(publicaciones.get(numPres).getEjemplares().size()-1));
         }
     }
 
     public void devolverEjemplar() {
         System.out.println("Cual Cliente?");
         for (int i = 0; i < clientes.size(); i++) {
-            System.out.println((i+1) +"- "+ clientes.get(i).toString());
-
+            System.out.print((i+1) +"- "+ clientes.get(i).toString());
+            if (clientes.get(i).getPrestados().size() == 0) System.out.print(" - VACÍO!");
+            System.out.println();
         }
         System.out.println((clientes.size()+1)+"- Cancelar");
         int numCli = Scanners.askMenu(clientes.size()+1)-1;
-        System.out.println("Cual Ejemplar?");
-        for (int i = 0; i < clientes.get(numCli).getPrestados().size(); i++) {
-            System.out.println((i+1) +"- "+ clientes.get(numCli).getPrestados().get(i));
+        if (numCli != clientes.size() && clientes.get(numCli).getPrestados().size() != 0) {
+            System.out.println("Cual Ejemplar?");
+            for (int i = 0; i < clientes.get(numCli).getPrestados().size(); i++) {
+                System.out.println((i + 1) + "- " + clientes.get(numCli).getPrestados().get(i));
+            }
+            System.out.println((clientes.get(numCli).getPrestados().size() + 1) + "- Cancelar");
+            int numEjem = Scanners.askMenu(clientes.get(numCli).getPrestados().size() + 1) - 1;
+            if (numEjem != publicaciones.size()) {
+                clientes.get(numCli).devolucion(publicaciones.get(numEjem).getEjemplares().get(publicaciones.get(numEjem).getEjemplares().size()-1));
+            }
         }
-        System.out.println((publicaciones.size()+1)+"- Cancelar");
-        int numPres = Scanners.askMenu(publicaciones.size()+1)-1;
-        publicaciones.get(numPres).crearEjemplar();
-        clientes.get(numCli).prestamo(publicaciones.get(numPres).getEjemplares().get(publicaciones.get(numPres).getEjemplares().size()));
     }
 }

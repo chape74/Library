@@ -1,10 +1,10 @@
 public class Menus {
 
-    public static void clear(){
+    public static void clear() {
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
 
-    public static void menuPrincipal(){
+    public static void menuPrincipal() {
         clear();
         System.out.println("***********************************");
         System.out.println("* @ Bienvenido a la biblioteca! @ *");

@@ -24,21 +24,11 @@ public class Libro extends Publicacion {
         return isbn.toString();
     }
 
-    public String getAutor() {
-        return autor;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
 
     @Override
     public String toString() {
         return "Libro: " + titulo +
+                " - Autor: " + autor +
                 " - ISBN: " + isbn;
     }
 }

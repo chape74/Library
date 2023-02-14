@@ -8,7 +8,7 @@ public class Main {
 
             switch (num){
                 case 1:
-                    biblioteca.darDeAltaPubicacion();
+                    biblioteca.darDeAltaPublicacion();
                     break;
                 case 2:
                     biblioteca.darDeBajaPublicacion();
@@ -29,6 +29,7 @@ public class Main {
                     biblioteca.devolverEjemplar();
                     break;
                 default:
+                    System.out.println("Adiós!");
                     break loop;
             }
         }

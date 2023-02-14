@@ -21,34 +21,12 @@ public class Revista extends Publicacion{
         this.diaPublicacion = LocalDate.now();
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getTematica() {
-        return tematica;
-    }
-
-    public Periodicidad getPeriodicidad() {
-        return periodicidad;
-    }
-
-    public LocalDate getDiaPublicacion() {
-        return diaPublicacion;
-    }
-
-    public Revista(String editorial, int numPaginas, Color color, String nombre, String tematica, Periodicidad periodicidad, LocalDate diaPublicacion) {
-        super(editorial, numPaginas, color);
-        this.nombre = nombre;
-        this.tematica = tematica;
-        this.periodicidad = periodicidad;
-        this.diaPublicacion = diaPublicacion;
-    }
-
     @Override
     public String toString() {
         return "Revista: " + nombre +
-                " - Periodicidad: " + getPeriodicidad();
+                " - Temática: " + tematica +
+                " - Periodicidad: " + periodicidad +
+                " - Dia de Publicación: " + diaPublicacion;
     }
 
     public enum Periodicidad {
@@ -56,14 +34,14 @@ public class Revista extends Publicacion{
         MENSUAL("Mensual"),
         TRIMESTRAL("Mensual");
 
-        private String perio;
+        private final String periodicidad;
 
-        Periodicidad(String perio) {
-            this.perio = perio;
+        Periodicidad(String periodicidad) {
+            this.periodicidad = periodicidad;
         }
         @Override
         public String toString() {
-            return perio;
+            return periodicidad;
         }
     }
 

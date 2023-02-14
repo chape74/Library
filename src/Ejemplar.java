@@ -3,9 +3,8 @@ import java.util.Random;
 
 public class Ejemplar {
 
-    private Publicacion publicacion;
+    private final Publicacion publicacion;
     private final int codigoEjemplar;
-    private boolean enUso;
     private LocalDate diaPrestamo;
     private LocalDate diaDevolucion;
 
@@ -14,29 +13,7 @@ public class Ejemplar {
         codigoEjemplar = new Random().nextInt(1000000000);
     }
 
-    public void eliminarPublicacion() {
-        this.publicacion=null;
-    }
 
-    public Publicacion getPublicacion() {
-        return publicacion;
-    }
-
-    public int getCodigoEjemplar() {
-        return codigoEjemplar;
-    }
-
-    public LocalDate getDiaPrestamo() {
-        return diaPrestamo;
-    }
-
-    public LocalDate getDiaDevolucion() {
-        return diaDevolucion;
-    }
-
-    public boolean isEnUso() {
-        return enUso;
-    }
 
     public void setDiaPrestamo(LocalDate diaPrestamo) {
         this.diaPrestamo = diaPrestamo;
@@ -46,15 +23,13 @@ public class Ejemplar {
         this.diaDevolucion = diaDevolucion;
     }
 
-    public void setEnUso(boolean enUso) {
-        this.enUso = enUso;
-    }
 
     @Override
     public String toString() {
-        String enuso = "";
-        if (enUso && !(publicacion instanceof Libro)) enuso = " - EN USO, NO SE AÑADIRÁ";
         return "Ejemplar de " + publicacion +
-                " - Codigo del ejemplar= " + codigoEjemplar + enuso;
+                " - Código del ejemplar: " + codigoEjemplar +
+                " - Dia préstamo: " + diaPrestamo +
+                " - Dia devolución: " + diaDevolucion
+                ;
     }
 }
